@@ -42,4 +42,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: admin194/product-service:latest
+          tags: admin194/client-service:latest
