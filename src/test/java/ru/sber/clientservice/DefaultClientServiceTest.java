@@ -7,11 +7,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.sber.clientservice.entity.Client;
+import ru.sber.clientservice.entity.ClientDeals;
 import ru.sber.clientservice.exception.ClientNotFoundException;
 import ru.sber.clientservice.repository.ClientRepository;
 import ru.sber.clientservice.service.impl.DefaultClientService;
 import ru.sber.dto.ClientResponseDto;
-
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,11 +34,12 @@ public class DefaultClientServiceTest {
     @BeforeEach
     void setUp() {
         testClient = Client.builder()
-                .id(1L)
-                .dealId("CRD-111")
+                .id("CLT-00123")
                 .fullName("Иванов Иван Иванович")
                 .inn("123456789012")
                 .build();
+
+        testClient.setDeals(List.of(new ClientDeals("CRD-111", testClient)));
     }
 
     @Test

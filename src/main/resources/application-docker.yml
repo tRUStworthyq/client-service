@@ -1,8 +1,12 @@
 spring:
+  flyway:
+    table: flyway_schema_history_client
+    baseline-on-migrate: true
+    baseline-version: 0
   datasource:
-    url: jdbc:postgresql://postgres-client:5432/client_db
-    username: client_user
-    password: client_pass
+    url: jdbc:postgresql://postgres-deal:5432/deal_db
+    username: deal_user
+    password: deal_pass
   jpa:
     hibernate:
       ddl-auto: validate

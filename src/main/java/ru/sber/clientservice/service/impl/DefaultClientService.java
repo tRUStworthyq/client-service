@@ -23,12 +23,13 @@ public class DefaultClientService implements ClientService {
         log.info("Fetching client info for dealId: {}", dealId);
         Client client = clientRepository.findByDealId(dealId)
                 .orElseThrow(() -> new ClientNotFoundException("Client not found for dealId: " + dealId));
-        return toDto(client);
+
+        return toDto(client, dealId);
     }
 
-    private ClientResponseDto toDto(Client client) {
+    private ClientResponseDto toDto(Client client, String dealId) {
         return ClientResponseDto.builder()
-                .dealId(client.getDealId())
+                .dealId(dealId)
                 .fullName(client.getFullName())
                 .inn(client.getInn())
                 .build();
